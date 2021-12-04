@@ -13,12 +13,39 @@ import {
   Badge,
 } from "reactstrap";
 
+const sortCharacters = (characters, setCharacters, order, setOrder) => {
+  characters.sort((a, b) => {
+    if (order === "desc") {
+      if (a.id > b.id) {
+        return -1;
+      }
+      if (a.id < b.id) {
+        return 1;
+      }
+    } else {
+      if (a.id < b.id) {
+        return -1;
+      }
+      if (a.id > b.id) {
+        return 1;
+      }
+    }
+    return 0;
+  });
+  setOrder(() => (order === "asc" ? "desc" : "asc"));
+
+  setCharacters(characters);
+};
+
 function App() {
   const [name, setName] = useState("Rick");
+  const [order, setOrder] = useState("desc"); //asc/desc
+
   const [characters, setCharacters] = useState([]);
   useEffect(() => {
     CharactersAPI.getCharactersByName(name, setCharacters);
   }, [name]);
+
   return (
     <div className="App">
       <Row>
@@ -45,7 +72,14 @@ function App() {
             <thead>
               <tr>
                 <th></th>
-                <th>id</th>
+                <th
+                  className="pointer"
+                  onClick={() => {
+                    sortCharacters(characters, setCharacters, order, setOrder);
+                  }}
+                >
+                  id
+                </th>
                 <th className="pointer">Name</th>
                 <th className="pointer">status</th>
               </tr>

@@ -13,20 +13,26 @@ import {
   Badge,
 } from "reactstrap";
 
-const sortCharacters = (characters, setCharacters, order, setOrder) => {
+const sortCharacters = (
+  characters,
+  setCharacters,
+  order,
+  setOrder,
+  orderBy
+) => {
   characters.sort((a, b) => {
     if (order === "desc") {
-      if (a.id > b.id) {
+      if (a[orderBy] > b[orderBy]) {
         return -1;
       }
-      if (a.id < b.id) {
+      if (a[orderBy] < b[orderBy]) {
         return 1;
       }
     } else {
-      if (a.id < b.id) {
+      if (a[orderBy] < b[orderBy]) {
         return -1;
       }
-      if (a.id > b.id) {
+      if (a[orderBy] > b[orderBy]) {
         return 1;
       }
     }
@@ -75,12 +81,31 @@ function App() {
                 <th
                   className="pointer"
                   onClick={() => {
-                    sortCharacters(characters, setCharacters, order, setOrder);
+                    sortCharacters(
+                      characters,
+                      setCharacters,
+                      order,
+                      setOrder,
+                      "id"
+                    );
                   }}
                 >
                   id
                 </th>
-                <th className="pointer">Name</th>
+                <th
+                  className="pointer"
+                  onClick={() => {
+                    sortCharacters(
+                      characters,
+                      setCharacters,
+                      order,
+                      setOrder,
+                      "name"
+                    );
+                  }}
+                >
+                  Name
+                </th>
                 <th className="pointer">status</th>
               </tr>
             </thead>

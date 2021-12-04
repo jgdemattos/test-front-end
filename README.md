@@ -1,59 +1,70 @@
-## Teste de Frontend
+# Getting Started with Create React App
 
-Fala, dev! Tudo bem?
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Queremos alguém que saiba trabalhar em equipe e que possa colaborar e ajudar seus colegas ao longo das tarefas, e além disso esteja disposto a aprender.
+## Available Scripts
 
-Este teste tem como objetivo avaliar e desafiar você. **Não é obrigatório realizá-lo completamente (nem dominar todos os frameworks)**, queremos apenas reconhecer seu esforço e potencial para aprender, se adaptar e tomar decisões.
+In the project directory, you can run:
 
-## O Desafio
+### `yarn start`
 
-Sua missão é criar uma landing page (página estática) para buscar, listar e detalhar personagens, usando a API [The Rick and Morty API](https://rickandmortyapi.com)
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-O layout inteiro é livre, mas a lista deverá conter no mínimo **nome** e **imagem** do personagem.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-Sobre a busca, ela poderá ser feita digitando o nome do personagem e retornando o personagem correspondente.
+### `yarn test`
 
-Seria interessante ordenar a lista também. Pensamos em pelo menos dois tipos: por ID do Personagem (padrão) ou por nome (ordem alfabética).
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Mas nossa listagem não seria muito útil só com nome e foto de cada personagem. Então sugerimos que, ao clicar em um item da lista, abra um modal ou página, com mais detalhes e características dele (fica a seu critério se será um modal ou qualquer outro layout para exibir esses detalhes, inclusive os dados que serão exibidos são de sua escolha também).
+### `yarn build`
 
-## Consigo fazer?
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-Consegue sim! Só precisa saber (ou aprender) um pouco sobre as seguintes tecnologias:
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-- HTML
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-- CSS
+### `yarn eject`
 
-- Javascript
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-- Git
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-- Consumo de APIs Rest
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-Você está livre para usar bibliotecas css como Ant Design, Chakra UI, Boostrap, Material e etc..
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Regras
+## Learn More
 
-Nem tudo são flores e, por conta disso, esse desafio possui algumas regras básicas:
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-- Na parte de JS, deve utilizar algum framework (ex.: ReactJS, VueJS...). Lembrando que ReactJS é diferencial, pois o utilizamos aqui na docgsx. Você não precisa saber todos, escolha um e seja feliz!
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-- Utilizar pelo menos uma função assíncrona nessas requisições da API.
+### Code Splitting
 
-- Pelo menos uma chamada na RickMortyAPI deve ser armazenada no **localStorage**, assim você pode utilizar os dados que a chamada à API te retornou, sem ter que chamar várias vezes a mesma rota.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-**Ex**: É feita uma requisição para pegar a listagem inicial dos personagens; coloca-se o resultado em cache e posteriormente quando entrar nessa mesma tela ela não deve fazer a requisição outra vez, e deve então utilizar o que está armazenado no nosso querido **localStorage**).
+### Analyzing the Bundle Size
 
-## Como eu entrego?
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta do Github, depois disso crie uma branch nova com o seu nome (ex: nome_sobrenome), para podermos identificá-lo.
+### Making a Progressive Web App
 
-Após terminar o desafio, você pode solicitar um pull request para a branch 'main' do nosso repositório. Vamos receber e fazer a avaliação de todos.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-## Só isso?
+### Advanced Configuration
 
-Só!
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-É isso e boa sorte!
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `yarn build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

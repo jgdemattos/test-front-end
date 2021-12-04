@@ -27,7 +27,11 @@ function App() {
           <div>
             <InputGroup>
               <InputGroupText>Name</InputGroupText>
-              <Input placeholder="Character's name" />
+              <Input
+                placeholder="Character's name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </InputGroup>
             <br />
           </div>

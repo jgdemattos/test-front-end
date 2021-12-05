@@ -11,6 +11,11 @@ import {
   Col,
   Table,
   Badge,
+  Modal,
+  Button,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
 } from "reactstrap";
 
 const sortCharacters = (
@@ -43,6 +48,27 @@ const sortCharacters = (
   setCharacters(characters);
 };
 
+function CharacterModal({
+  selectedCharacter: { name, image, status },
+  isOpen,
+  toggle,
+}) {
+  return (
+    <Modal isOpen={isOpen} toggle={toggle}>
+      <ModalHeader toggle={toggle}>
+        {name}
+        <Badge pill>{status}</Badge>
+      </ModalHeader>
+      <ModalBody>
+        <img className="character-image" src={image}></img>
+      </ModalBody>
+      <ModalFooter>
+        <Button onClick={toggle}>Cancel</Button>
+      </ModalFooter>
+    </Modal>
+  );
+}
+
 function App() {
   const [name, setName] = useState("Rick");
   const [order, setOrder] = useState("desc"); //asc/desc
@@ -51,7 +77,13 @@ function App() {
   useEffect(() => {
     CharactersAPI.getCharactersByName(name, setCharacters);
   }, [name]);
+  const [modal, setModal] = React.useState(false);
 
+  const [selectedCharacter, setSelectedCharacter] = useState({});
+  const toggle = (character) => {
+    setSelectedCharacter(character);
+    setModal(!modal);
+  };
   return (
     <div className="App">
       <Row>
@@ -107,6 +139,7 @@ function App() {
                   Name
                 </th>
                 <th className="pointer">status</th>
+                <th>see more</th>
               </tr>
             </thead>
             <tbody>
@@ -123,6 +156,12 @@ function App() {
                   <td>
                     <Badge pill>{character.status}</Badge>
                   </td>
+                  <td>
+                    {" "}
+                    <Button color="danger" onClick={() => toggle(character)}>
+                      Click Me
+                    </Button>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -130,6 +169,11 @@ function App() {
         </Col>
         <Col></Col>
       </Row>
+      <CharacterModal
+        isOpen={modal}
+        toggle={toggle}
+        selectedCharacter={selectedCharacter}
+      ></CharacterModal>
     </div>
   );
 }

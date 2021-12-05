@@ -7,7 +7,11 @@ export const getCharacters = () =>
       return results;
     });
 
-export const getCharactersByName = (name, setCharacters) =>
+export async function getCharactersByName(name, setCharacters) {
   fetch(`${api}/character/?name=${name}`)
     .then((characters) => characters.json())
-    .then((characters) => setCharacters(characters.results));
+    .then((characters) => {
+      setCharacters(characters.results);
+      localStorage.setItem("characters", JSON.stringify(characters.results));
+    });
+}

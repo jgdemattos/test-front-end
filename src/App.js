@@ -75,7 +75,14 @@ function App() {
 
   const [characters, setCharacters] = useState([]);
   useEffect(() => {
-    CharactersAPI.getCharactersByName(name, setCharacters);
+    let storedCharacters = localStorage.getItem("characters");
+    if (storedCharacters) {
+      console.log("getFromLocalstoreage");
+      setCharacters(JSON.parse(storedCharacters));
+    } else {
+      console.log("getFromAPI");
+      CharactersAPI.getCharactersByName(name, setCharacters);
+    }
   }, [name]);
   const [modal, setModal] = React.useState(false);
 
@@ -84,6 +91,7 @@ function App() {
     setSelectedCharacter(character);
     setModal(!modal);
   };
+
   return (
     <div className="App">
       <Row>
@@ -103,72 +111,74 @@ function App() {
         </Col>
         <Col></Col>
       </Row>
-      <Row>
-        <Col></Col>
-        <Col>
-          <Table striped>
-            <thead>
-              <tr>
-                <th></th>
-                <th
-                  className="pointer"
-                  onClick={() => {
-                    sortCharacters(
-                      characters,
-                      setCharacters,
-                      order,
-                      setOrder,
-                      "id"
-                    );
-                  }}
-                >
-                  id
-                </th>
-                <th
-                  className="pointer"
-                  onClick={() => {
-                    sortCharacters(
-                      characters,
-                      setCharacters,
-                      order,
-                      setOrder,
-                      "name"
-                    );
-                  }}
-                >
-                  Name
-                </th>
-                <th className="pointer">status</th>
-                <th>see more</th>
-              </tr>
-            </thead>
-            <tbody>
-              {characters.map((character) => (
-                <tr key={character.id}>
-                  <th>
-                    <img
-                      className="character-image"
-                      src={character.image}
-                    ></img>
+      {characters.length > 0 ? (
+        <Row>
+          <Col></Col>
+          <Col>
+            <Table striped>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th
+                    className="pointer"
+                    onClick={() => {
+                      sortCharacters(
+                        characters,
+                        setCharacters,
+                        order,
+                        setOrder,
+                        "id"
+                      );
+                    }}
+                  >
+                    id
                   </th>
-                  <td>{character.id}</td>
-                  <td>{character.name}</td>
-                  <td>
-                    <Badge pill>{character.status}</Badge>
-                  </td>
-                  <td>
-                    {" "}
-                    <Button color="danger" onClick={() => toggle(character)}>
-                      Click Me
-                    </Button>
-                  </td>
+                  <th
+                    className="pointer"
+                    onClick={() => {
+                      sortCharacters(
+                        characters,
+                        setCharacters,
+                        order,
+                        setOrder,
+                        "name"
+                      );
+                    }}
+                  >
+                    Name
+                  </th>
+                  <th className="pointer">status</th>
+                  <th>see more</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        </Col>
-        <Col></Col>
-      </Row>
+              </thead>
+              <tbody>
+                {characters.map((character) => (
+                  <tr key={character.id}>
+                    <th>
+                      <img
+                        className="character-image"
+                        src={character.image}
+                      ></img>
+                    </th>
+                    <td>{character.id}</td>
+                    <td>{character.name}</td>
+                    <td>
+                      <Badge pill>{character.status}</Badge>
+                    </td>
+                    <td>
+                      {" "}
+                      <Button color="danger" onClick={() => toggle(character)}>
+                        Click Me
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Col>
+          <Col></Col>
+        </Row>
+      ) : null}
       <CharacterModal
         isOpen={modal}
         toggle={toggle}

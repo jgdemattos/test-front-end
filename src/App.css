@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin-top: 5em;
 }
 
 .App-logo {
@@ -38,4 +39,8 @@
 }
 .pointer {
   cursor: pointer;
+}
+.character-image {
+  height: 50px;
+  width: 50px;
 }
